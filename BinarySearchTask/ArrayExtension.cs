@@ -31,11 +31,23 @@ namespace BinarySearchTask
                 throw new ArgumentNullException(nameof(source));
             }
 
-            for (int i = 0; i < source.Length; i++)
+            int min = 0, max = source.Length - 1;
+            while (min <= max)
             {
+                int i = min + ((max - min) / 2);
+
                 if (source[i] == value)
                 {
                     return i;
+                }
+
+                if (source[i] < value)
+                {
+                    min = i + 1;
+                }
+                else
+                {
+                    max = i - 1;
                 }
             }
 
